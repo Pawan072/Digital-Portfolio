@@ -1,5 +1,7 @@
+## Setup Instructions
 
-//for install all dependencies
-npm install
-// run the server 
-npm run dev
+1. **Install dependencies:**
+   `npm install`
+
+2. **Start development server:**
+   `npm run dev`
