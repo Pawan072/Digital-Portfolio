@@ -17,7 +17,7 @@ function Header() {
 
     return (
         <header className="sticky top-0 z-[100] bg-[#030712]/80 backdrop-blur-xl border-b border-white/5">
-            <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
                 
                 <motion.div 
                     initial={{ opacity: 0, x: -20 }}

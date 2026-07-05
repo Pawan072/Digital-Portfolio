@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import {React, useEffect, useRef} from 'react';
 import Typewriter from 'typewriter-effect';
 import toast from 'react-hot-toast';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion';
 
 // Assest
 import heroIMG from '../assets/HomeImg/Digital Transformation.jpg';
@@ -93,7 +93,30 @@ function Home(){
     }
   };
 
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
   
+  const rotateX = useSpring(useTransform(y, [-100, 100], [10, -10]), { stiffness: 100, damping: 15 });
+  const rotateY = useSpring(useTransform(x, [-100, 100], [-10, 10]), { stiffness: 100, damping: 15 });
+  const rotateZ = useSpring(useTransform(x, [-100, 100], [-5, 5]), { stiffness: 80, damping: 12 });
+
+  function handleMouseMove(event) {
+  const element = event.currentTarget;
+  const rect = element.getBoundingClientRect();
+  const width = rect.width;
+  const height = rect.height;
+  const mouseX = event.clientX - rect.left - width / 2;
+  const mouseY = event.clientY - rect.top - height / 2;
+  
+  x.set(mouseX);
+  y.set(mouseY);
+}
+
+function handleMouseLeave() {
+  // Cursor hatne par card wapas apni jagah shanti se ruk jayega
+  x.set(0);
+  y.set(0);
+}
 
   return(
     <>
@@ -170,21 +193,59 @@ function Home(){
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className='flex-1 flex justify-center md:justify-end w-full'
               >
-                <div className="relative group max-w-70 sm:max-w-87.5 md:max-w-md">
-                  <img 
-                    className='rounded-2xl w-full h-auto object-cover shadow-2xl border-2 border-white/10 transform transition duration-500 group-hover:scale-[1.02]' 
-                    src={img} 
-                    alt="Pawan Yadav"
-                  />
 
-                  <div className="mt-4 text-center md:text-right">
+                <div className="relative group max-w-60 sm:max-w-87.5 md:max-w-md">
+
+
+                  <div className="mx-auto ml-auto w-[280px] sm:w-[320px] relative flex flex-col items-center pt-8">
+    
+                    {/* 1. Hanging String / Lanyard Clip */}
+                    <div className="absolute top-0 w-1 h-10 bg-linear-to-b from-blue-500/50 to-blue-400 z-10 rounded-full" />
+                    <div className="absolute top-8 w-4 h-4 bg-slate-700 border-2 border-white/20 rounded-full z-20 shadow-md" />
+
+                    {/* 2. Framer Motion Animated Card Container */}
+                    <motion.div 
+                      className="w-full cursor-pointer relative z-10"
+                      onMouseMove={handleMouseMove}
+                      onMouseLeave={handleMouseLeave}
+                      style={{
+                        rotateX: rotateX,
+                        rotateY: rotateY,
+                        rotateZ: rotateZ,
+                        transformOrigin: "top center", // Crucial: Card upar se fix rahega aur niche se jhulega
+                        transformStyle: "preserve-3d"
+                      }}
+                    >
+                      {/* Aapka Shield Shape Wala Card */}
+                      <div 
+                        className="w-full h-[360px] overflow-hidden bg-slate-900/90 backdrop-blur-sm shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] border border-white/10"
+                        style={{ 
+                          clipPath: 'polygon(0 0, 100% 0, 100% 82%, 50% 100%, 0 82%)' 
+                        }}
+                      >
+                        <img 
+                          className="w-full h-full object-cover select-none pointer-events-none" 
+                          src={img} 
+                          alt="Pawan Yadav"
+                        />
+                      </div>
+                    </motion.div>
+                      
+                    {/* Name & Title (Card ke bahar bottom me static) */}
+                    <div className="text-center mt-6">
+                      <h3 className="text-xl font-bold text-white tracking-wide">Pawan Yadav</h3>
+                      <p className="text-xs text-blue-400 font-semibold tracking-widest uppercase mt-1">Full-Stack Developer</p>
+                    </div>
+                  </div>
+
+                  {/* <div className="mt-4 text-center md:text-right">
                     <h2 className='text-slate-200 text-2xl font-bold'>
                       Pawan Yadav
                     </h2>
                     <p className="text-blue-400 font-medium text-sm tracking-[0.2em] uppercase mt-1">
                       Full-Stack Developer
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </motion.div>
                   
