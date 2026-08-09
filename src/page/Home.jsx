@@ -197,7 +197,7 @@ function handleMouseLeave() {
                 <div className="relative group max-w-60 sm:max-w-87.5 md:max-w-md">
 
 
-                  <div className="mx-auto ml-auto w-[280px] sm:w-[320px] relative flex flex-col items-center pt-8">
+                  <div className="mx-auto ml-auto w-70 sm:w-[320px] relative flex flex-col items-center pt-8">
     
                     {/* 1. Hanging String / Lanyard Clip */}
                     <div className="absolute top-0 w-1 h-10 bg-linear-to-b from-blue-500/50 to-blue-400 z-10 rounded-full" />
@@ -305,7 +305,7 @@ function handleMouseLeave() {
                   GitHub Repo
                 </a>
               </div>
-              <p className='text-xs text-red-400 mt-4 italic'>* Note: Project is optimized for Desktop only.</p>
+              {/* <p className='text-xs text-red-400 mt-4 italic'>* Note: Project is optimized for Desktop only.</p> */}
             </motion.div>
 
             {/* Project 2: NVBC */}
