@@ -218,7 +218,7 @@ function handleMouseLeave() {
                     >
                       {/* Aapka Shield Shape Wala Card */}
                       <div 
-                        className="w-full h-[360px] overflow-hidden bg-slate-900/90 backdrop-blur-sm shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] border border-white/10"
+                        className="w-full h-90 overflow-hidden bg-slate-900/90 backdrop-blur-sm shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] border border-white/10"
                         style={{ 
                           clipPath: 'polygon(0 0, 100% 0, 100% 82%, 50% 100%, 0 82%)' 
                         }}
@@ -237,15 +237,6 @@ function handleMouseLeave() {
                       <p className="text-xs text-blue-400 font-semibold tracking-widest uppercase mt-1">Full-Stack Developer</p>
                     </div>
                   </div>
-
-                  {/* <div className="mt-4 text-center md:text-right">
-                    <h2 className='text-slate-200 text-2xl font-bold'>
-                      Pawan Yadav
-                    </h2>
-                    <p className="text-blue-400 font-medium text-sm tracking-[0.2em] uppercase mt-1">
-                      Full-Stack Developer
-                    </p>
-                  </div> */}
                 </div>
               </motion.div>
                   
