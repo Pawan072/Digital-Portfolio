@@ -16,7 +16,7 @@ function Header() {
     ];
 
     return (
-        <header className="sticky top-0 z-[100] bg-[#030712]/80 backdrop-blur-xl border-b border-white/5">
+        <header className="sticky top-0 z-50 bg-[#030712] border-b border-white/5">
             <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
                 
                 <motion.div 
@@ -78,11 +78,12 @@ function Header() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="absolute top-20 left-0 w-full bg-[#030712] border-b border-white/5 overflow-hidden md:hidden"
+                        className="absolute left-0 w-full bg-[#030712] z-100 backdrop-blur-2xl border-b border-white/5 overflow-hidden md:hidden"
                     >
                         <nav className="flex flex-col p-6 gap-6 text-xl font-bold">
                             {navLinks.map((link, index) => (
                                 <motion.div
+                                    // className=''
                                     key={link.path}
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
